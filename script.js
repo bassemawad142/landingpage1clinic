@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbzEVqMdSSnbEPtqo8refHMY8aRPI1ZUgxD5AE7A-ooCs-8WqCblq3UTeQcWj9tmc403/exec";
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxCwWwyeUXxV504SndLyeMMu18S8Z9CZyz2auFyLiHDnY4hACeXDde4Pq9aBbmnPJJv/exec";
 const COUPON_CODE="PSO2026";
 const WHATSAPP_NUMBER="966559610942";
 
