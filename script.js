@@ -1,4 +1,8 @@
+// ============================================
+// PURE SKIN LANDING PAGE
+// ============================================
 
+// رابط Google Apps Script
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbxCwWwyeUXxV504SndLyeMMu18S8Z9CZyz2auFyLiHDnY4hACeXDde4Pq9aBbmnPJJv/exec";
 
@@ -9,96 +13,58 @@ const COUPON_CODE = "SF2026";
 const WHATSAPP_NUMBER = "966559610942";
 
 
-// ======================================================
-// GET CAMPAIGN DATA
-// ======================================================
+// ============================================
+// الحصول على بيانات الإعلان
+// ============================================
 
 function getCampaignData() {
 
     const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        new URLSearchParams(window.location.search);
 
     return {
-
-        utm_source:
-            params.get("utm_source") || "",
-
-        utm_medium:
-            params.get("utm_medium") || "",
-
-        utm_campaign:
-            params.get("utm_campaign") || "",
-
-        utm_content:
-            params.get("utm_content") || "",
-
-        gclid:
-            params.get("gclid") || ""
-
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_content: params.get("utm_content") || "",
+        gclid: params.get("gclid") || ""
     };
 
 }
 
 
-// ======================================================
-// SEND DATA TO GOOGLE SHEETS
-// ======================================================
+// ============================================
+// إرسال البيانات إلى Google Sheets
+// ============================================
 
 async function sendLead(data) {
 
-    const formData =
-        new URLSearchParams();
+    const formData = new URLSearchParams();
 
-
-    formData.append(
-        "name",
-        data.name
-    );
-
-
-    formData.append(
-        "phone",
-        data.phone
-    );
-
-
-    formData.append(
-        "service",
-        data.service
-    );
-
-
-    formData.append(
-        "coupon",
-        COUPON_CODE
-    );
-
+    formData.append("name", data.name);
+    formData.append("phone", data.phone);
+    formData.append("service", data.service);
+    formData.append("coupon", COUPON_CODE);
 
     formData.append(
         "utm_source",
         data.utm_source || ""
     );
 
-
     formData.append(
         "utm_medium",
         data.utm_medium || ""
     );
-
 
     formData.append(
         "utm_campaign",
         data.utm_campaign || ""
     );
 
-
     formData.append(
         "utm_content",
         data.utm_content || ""
     );
-
 
     formData.append(
         "gclid",
@@ -111,27 +77,17 @@ async function sendLead(data) {
         await fetch(
             GOOGLE_SCRIPT_URL,
             {
-
                 method: "POST",
-
                 mode: "no-cors",
-
                 headers: {
-
                     "Content-Type":
-                        "application/x-www-form-urlencoded"
-
+                        "application/x-www-form-urlencoded;charset=UTF-8"
                 },
-
-                body:
-                    formData.toString()
-
+                body: formData.toString()
             }
         );
 
-
         return true;
-
 
     } catch (error) {
 
@@ -147,43 +103,29 @@ async function sendLead(data) {
 }
 
 
-// ======================================================
-// GET HTML ELEMENTS
-// ======================================================
+// ============================================
+// عناصر الصفحة
+// ============================================
 
 const form =
-    document.getElementById(
-        "leadForm"
-    );
-
+    document.getElementById("leadForm");
 
 const formSection =
-    document.getElementById(
-        "formSection"
-    );
-
+    document.getElementById("formSection");
 
 const successSection =
-    document.getElementById(
-        "successSection"
-    );
-
+    document.getElementById("successSection");
 
 const copyButton =
-    document.getElementById(
-        "copyBtn"
-    );
-
+    document.getElementById("copyBtn");
 
 const whatsappButton =
-    document.getElementById(
-        "successWhatsApp"
-    );
+    document.getElementById("successWhatsApp");
 
 
-// ======================================================
-// CHECK FORM
-// ======================================================
+// ============================================
+// نموذج التسجيل
+// ============================================
 
 if (form) {
 
@@ -194,9 +136,7 @@ if (form) {
             event.preventDefault();
 
 
-            // ------------------------------------------
-            // GET VALUES
-            // ------------------------------------------
+            // الحصول على البيانات
 
             const name =
                 document
@@ -204,13 +144,11 @@ if (form) {
                     .value
                     .trim();
 
-
             const phone =
                 document
                     .getElementById("phone")
                     .value
                     .trim();
-
 
             const service =
                 document
@@ -218,15 +156,15 @@ if (form) {
                     .value;
 
 
+            // زر التسجيل
+
             const submitButton =
-                form.querySelector(
-                    "button[type='submit'], button"
-                );
+                form.querySelector("button");
 
 
-            // ------------------------------------------
-            // VALIDATE NAME
-            // ------------------------------------------
+            // ========================================
+            // التحقق من الاسم
+            // ========================================
 
             if (!name) {
 
@@ -239,21 +177,16 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // CLEAN PHONE
-            // ------------------------------------------
+            // ========================================
+            // التحقق من رقم الجوال
+            // ========================================
 
-            let cleanPhone =
+            const cleanPhone =
                 phone.replace(
                     /[\s-]/g,
                     ""
                 );
 
-
-            // ------------------------------------------
-            // SUPPORT SAUDI PHONE
-            // 05XXXXXXXX
-            // ------------------------------------------
 
             if (
                 !/^05\d{8}$/.test(
@@ -270,9 +203,9 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // CHECK SERVICE
-            // ------------------------------------------
+            // ========================================
+            // التحقق من الخدمة
+            // ========================================
 
             if (!service) {
 
@@ -285,9 +218,9 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // DISABLE BUTTON
-            // ------------------------------------------
+            // ========================================
+            // تعطيل الزر أثناء الإرسال
+            // ========================================
 
             if (submitButton) {
 
@@ -300,84 +233,58 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // GET CAMPAIGN DATA
-            // ------------------------------------------
+            // ========================================
+            // بيانات الحملة
+            // ========================================
 
-            const campaignData =
+            const campaign =
                 getCampaignData();
 
 
-            // ------------------------------------------
-            // CREATE LEAD
-            // ------------------------------------------
+            // ========================================
+            // تجهيز بيانات العميل
+            // ========================================
 
             const leadData = {
 
-                name:
-                    name,
+                name: name,
 
-                phone:
-                    cleanPhone,
+                phone: cleanPhone,
 
-                service:
-                    service,
+                service: service,
 
-                coupon:
-                    COUPON_CODE,
+                coupon: COUPON_CODE,
 
                 utm_source:
-                    campaignData.utm_source,
+                    campaign.utm_source,
 
                 utm_medium:
-                    campaignData.utm_medium,
+                    campaign.utm_medium,
 
                 utm_campaign:
-                    campaignData.utm_campaign,
+                    campaign.utm_campaign,
 
                 utm_content:
-                    campaignData.utm_content,
+                    campaign.utm_content,
 
                 gclid:
-                    campaignData.gclid
+                    campaign.gclid
 
             };
 
 
-            // ------------------------------------------
-            // SEND TO GOOGLE SHEETS
-            // ------------------------------------------
+            // ========================================
+            // إرسال البيانات
+            // ========================================
 
             await sendLead(
                 leadData
             );
 
 
-            // ------------------------------------------
-            // SAVE DATA LOCALLY
-            // ------------------------------------------
-
-            try {
-
-                localStorage.setItem(
-                    "pureSkinLead",
-                    JSON.stringify(
-                        leadData
-                    )
-                );
-
-            } catch (error) {
-
-                console.log(
-                    "LocalStorage unavailable"
-                );
-
-            }
-
-
-            // ------------------------------------------
-            // HIDE FORM
-            // ------------------------------------------
+            // ========================================
+            // إظهار رسالة النجاح
+            // ========================================
 
             if (formSection) {
 
@@ -388,10 +295,6 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // SHOW SUCCESS
-            // ------------------------------------------
-
             if (successSection) {
 
                 successSection.classList.remove(
@@ -401,9 +304,9 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // UPDATE COUPON
-            // ------------------------------------------
+            // ========================================
+            // عرض كود الخصم
+            // ========================================
 
             const couponElement =
                 document.querySelector(
@@ -419,9 +322,9 @@ if (form) {
             }
 
 
-            // ------------------------------------------
-            // WHATSAPP MESSAGE
-            // ------------------------------------------
+            // ========================================
+            // إعداد واتساب
+            // ========================================
 
             if (whatsappButton) {
 
@@ -444,9 +347,9 @@ if (form) {
 }
 
 
-// ======================================================
-// COPY COUPON
-// ======================================================
+// ============================================
+// نسخ كود الخصم
+// ============================================
 
 if (copyButton) {
 
@@ -493,9 +396,9 @@ if (copyButton) {
 }
 
 
-// ======================================================
-// SET WHATSAPP BUTTON
-// ======================================================
+// ============================================
+// إعداد واتساب من البداية
+// ============================================
 
 if (whatsappButton) {
 
@@ -507,6 +410,10 @@ if (whatsappButton) {
         WHATSAPP_NUMBER +
         "?text=" +
         encodeURIComponent(
+            message
+        );
+
+}
             message
         );
 
