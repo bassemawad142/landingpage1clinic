@@ -1,5 +1,5 @@
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxCwWwyeUXxV504SndLyeMMu18S8Z9CZyz2auFyLiHDnY4hACeXDde4Pq9aBbmnPJJv/exec";
+"https://script.google.com/macros/s/AKfycbzgm9aPioB6cf9W9vztGziEP_5pm3_zLIVB6R1ubkM2qgVYvHHdWLUxmd3qTdPP3H5R/exec";
 
 const COUPON_CODE = "SF2026";
 
