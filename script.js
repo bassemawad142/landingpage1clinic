@@ -5,6 +5,7 @@ const COUPON_CODE = "SF2026";
 
 const WHATSAPP_NUMBER = "966559610942";
 
+const PHONE_NUMBER = "920017285";
 
 document.addEventListener("DOMContentLoaded", function () {
 
