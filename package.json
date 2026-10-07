@@ -1,0 +1,20 @@
+{
+  "name": "landingpage1clinic",
+  "version": "1.0.0",
+  "description": "Pure Skin Clinic Landing Page with Vercel Web Analytics",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js"
+  },
+  "keywords": [
+    "landing-page",
+    "clinic",
+    "analytics"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
