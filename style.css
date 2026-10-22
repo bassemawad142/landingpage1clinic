@@ -645,6 +645,80 @@ footer {
     .floating-contact a b {
         display: none;
     }
+ 
+/* ===== Pure Skin Image Carousel ===== */
+
+.gallery-carousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #f7f2ed;
+    direction: ltr;
+}
+
+.gallery-track {
+    display: flex;
+    width: 300%;
+    animation: pureSkinCarousel 15s infinite ease-in-out;
+}
+
+.gallery-track img {
+    display: block;
+    flex: 0 0 33.333333%;
+    width: 33.333333%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* حركة الانتقال بين الصور */
+@keyframes pureSkinCarousel {
+    0%, 28% {
+        transform: translateX(0);
+    }
+
+    33%, 61% {
+        transform: translateX(-33.333333%);
+    }
+
+    66%, 94% {
+        transform: translateX(-66.666667%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* تنسيق قسم الحجز أسفل الصور */
+.booking-section {
+    padding: 55px 20px;
+    background: #fff;
+}
+
+.booking-section .hero-form {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .gallery-track img {
+        height: 260px;
+    }
+
+    .booking-section {
+        padding: 30px 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+        animation: none;
+    }
+}
+
 
 }
 ```
