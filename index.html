@@ -32,128 +32,71 @@
    
 <main>
    
-<section class="hero">
 
-<div class="wrap hero-grid">
-
-    <!-- صورة العيادة -->
-    <div class="hero-img">
-        <img src="1.jpg" alt="Pure Skin">
+<!-- معرض الصور المتحرك -->
+<section class="gallery-carousel" aria-label="صور عيادات Pure Skin">
+    <div class="gallery-track">
+        <img src="model1.png" alt="عيادات Pure Skin للجلدية والتجميل">
+        <img src="model3.png" alt="خدمات الجلدية والتجميل في Pure Skin">
+        <img src="model4.png" alt="العناية بالبشرة في Pure Skin">
     </div>
-
-    <!-- نموذج التسجيل -->
-    <div class="hero-form">
-
-      
-       <span class="badge"> عروض اليوم الوطني السعودي </span> 
-      
-<!-- headline -->
-       
-        <h2>احصل على كود خصم اضافي لعروض اليوم الوطني السعودي 96 </h2>
-        
-       
-        <p>
-سجل بياناتك و سنتواصل معك 
-        </p>
-
-        <div id="formSection">
-
-            <form id="leadForm">
-
-                <label>الاسم</label>
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="اكتب اسمك"
-                    required>
-
-                <label>رقم الجوال</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="05xxxxxxxx"
-                    required>
-
-                <label>الخدمة</label>
-
-                <select id="service" required>
-
-                    <option value="">اختر الخدمة</option>
-
-                    <option>ليزر إزالة الشعر</option>
-
-                    <option>بوتوكس</option>
-
-                    <option>فيلر</option>
-
-                    <option>هيدرافيشيال</option>
-
-                    <option>ديرما بن</option>
-
-                    <option>إبر النضارة</option>
-
-                </select>
-
-               <button type="submit" class="btn full">
-    احصل على كود الخصم
-</button>
-
-            </form>
-
-        </div>
-
-        <div
-            id="successSection"
-            class="success hidden">
-
-            <div class="success-icon">
-
-                ✓
-
-            </div>
-
-            <h3>
-
-                تم التسجيل بنجاح 🎉
-
-            </h3>
-
-            <p>
-
-                كود الخصم الخاص بك
-
-            </p>
-
-            <div class="coupon">
-
-                SF2026
-
-            </div>
-
-            <button
-                id="copyBtn"
-                class="secondary full">
-
-                نسخ الكود
-
-            </button>
-
-            <a
-                id="successWhatsApp"
-                class="wa full"
-                target="_blank">
-
-                احجز عبر واتساب
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
 </section>
+
+<!-- قسم التسجيل أسفل الصور -->
+<section class="booking-section" id="booking">
+    <div class="wrap">
+        <div class="hero-form">
+
+            <span class="badge">عيادات بيور سكن للجلدية والتجميل</span>
+
+            <h2>ابدأ رحلتك نحو بشرة أكثر نضارة وجمالًا</h2>
+
+            <p>سجّل بياناتك وسيتواصل معك فريقنا لمساعدتك في اختيار الخدمة المناسبة</p>
+
+            <div id="formSection">
+                <form id="leadForm">
+
+                    <label for="name">الاسم</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="اكتب اسمك"
+                        required>
+
+                    <label for="phone">رقم الجوال</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="05xxxxxxxx"
+                        required>
+
+                    <label for="service">الخدمة</label>
+                    <select id="service" required>
+                        <option value="">اختر الخدمة</option>
+                        <option>جلدية</option>
+                        <option>بوتوكس</option>
+                        <option>فيلر</option>
+                        <option>إبر النضارة</option>
+                        <option>استشارة جلدية وتجميل</option>
+                    </select>
+
+                    <button type="submit" class="btn full">
+                        سجّل بياناتك الآن
+                    </button>
+
+                </form>
+            </div>
+
+            <div id="successSection" class="success hidden">
+                <div class="success-icon">✓</div>
+                <h3>تم التسجيل بنجاح 🎉</h3>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
     
  
 
