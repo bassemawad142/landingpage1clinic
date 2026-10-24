@@ -350,3 +350,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".gallery-track");
+    const images = document.querySelectorAll(".gallery-track img");
+    const prevButton = document.querySelector(".gallery-prev");
+    const nextButton = document.querySelector(".gallery-next");
+
+    if (!track || images.length === 0 || !prevButton || !nextButton) {
+        return;
+    }
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        currentIndex = (index + images.length) % images.length;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    nextButton.addEventListener("click", function () {
+        showImage(currentIndex + 1);
+    });
+
+    prevButton.addEventListener("click", function () {
+        showImage(currentIndex - 1);
+    });
+});
+
