@@ -178,31 +178,29 @@ document.addEventListener("DOMContentLoaded", function () {
             // =====================================
 
           
+
 try {
-    await fetch(
-        GOOGLE_SCRIPT_URL,
-        {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type":
-                    "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-            body: data.toString()
-        }
-    );
+    button.disabled = true;
+    button.innerText = "جاري التسجيل...";
 
-    // إخفاء النموذج بعد إرسال الطلب
+    await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: data.toString()
+    });
+
     formSection.classList.add("hidden");
-
-    // إظهار رسالة نجاح التسجيل
     successSection.classList.remove("hidden");
 
-    // تجهيز رسالة واتساب بدون كود خصم
-    const message =
-        "السلام عليكم، سجلت في موقع Pure Skin Clinic وأرغب في حجز الخدمة التي اخترتها.";
-
+    // رسالة واتساب بدون كود خصم
     if (whatsappButton) {
+        const message =
+            "السلام عليكم، سجلت بياناتي في Pure Skin Clinic وأرغب في حجز الخدمة التي اخترتها.";
+
         whatsappButton.href =
             "https://wa.me/" +
             WHATSAPP_NUMBER +
@@ -213,7 +211,7 @@ try {
 } catch (error) {
     console.error("Registration Error:", error);
 
-    alert("تعذر إرسال طلب التسجيل، حاول مرة أخرى.");
+    alert("حدث خطأ أثناء التسجيل، حاول مرة أخرى.");
 
     button.disabled = false;
     button.innerText = "تسجيل البيانات";
