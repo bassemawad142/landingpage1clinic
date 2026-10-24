@@ -177,103 +177,47 @@ document.addEventListener("DOMContentLoaded", function () {
             // إرسال البيانات إلى Google Apps Script
             // =====================================
 
-            try {
-
-                await fetch(
-                    GOOGLE_SCRIPT_URL,
-                    {
-                        method: "POST",
-
-                        mode: "no-cors",
-
-                        headers: {
-                            "Content-Type":
-                                "application/x-www-form-urlencoded;charset=UTF-8"
-                        },
-
-                        body:
-                            data.toString()
-                    }
-                );
-
-
-                // =================================
-                // إخفاء النموذج
-                // =================================
-
-                formSection.classList.add(
-                    "hidden"
-                );
-
-
-                // =================================
-                // إظهار رسالة النجاح
-                // =================================
-
-                successSection.classList.remove(
-                    "hidden"
-                );
-
-
-                // =================================
-                // عرض الكود
-                // =================================
-
-                const coupon =
-                    document.querySelector(
-                        ".coupon"
-                    );
-
-
-                if (coupon) {
-
-                    coupon.textContent =
-                        COUPON_CODE;
-                }
-
-
-                // =================================
-                // تجهيز واتساب
-                // =================================
-
-                const message =
-                    "السلام عليكم، سجلت في عرض Pure Skin وحصلت على كود الخصم " +
-                    COUPON_CODE +
-                    " وأرغب في الحجز.";
-
-
-                whatsappButton.href =
-                    "https://wa.me/" +
-                    WHATSAPP_NUMBER +
-                    "?text=" +
-                    encodeURIComponent(
-                        message
-                    );
-
-
-            } catch (error) {
-
-                console.error(
-                    "Registration Error:",
-                    error
-                );
-
-
-                alert(
-                    "حدث خطأ أثناء التسجيل، حاول مرة أخرى."
-                );
-
-
-                button.disabled =
-                    false;
-
-
-                button.innerText =
-                    "احصل على كود الخصم";
-            }
-
+          
+try {
+    await fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type":
+                    "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: data.toString()
         }
     );
+
+    // إخفاء النموذج بعد إرسال الطلب
+    formSection.classList.add("hidden");
+
+    // إظهار رسالة نجاح التسجيل
+    successSection.classList.remove("hidden");
+
+    // تجهيز رسالة واتساب بدون كود خصم
+    const message =
+        "السلام عليكم، سجلت في موقع Pure Skin Clinic وأرغب في حجز الخدمة التي اخترتها.";
+
+    if (whatsappButton) {
+        whatsappButton.href =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            encodeURIComponent(message);
+    }
+
+} catch (error) {
+    console.error("Registration Error:", error);
+
+    alert("تعذر إرسال طلب التسجيل، حاول مرة أخرى.");
+
+    button.disabled = false;
+    button.innerText = "تسجيل البيانات";
+}
 
 
     // =========================================
