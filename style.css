@@ -789,4 +789,70 @@ footer {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
+   
+/* ===== Pure Skin Gallery Carousel ===== */
+
+.gallery-carousel {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    direction: ltr;
+    margin: 0 auto;
+    background: #f7f2ed;
+}
+
+.gallery-track {
+    display: flex;
+    width: 400%;
+    animation: gallerySlide 20s infinite;
+    will-change: transform;
+}
+
+.gallery-track img {
+    display: block;
+    flex: 0 0 25%;
+    width: 25%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* تحريك الصور تلقائيًا */
+@keyframes gallerySlide {
+    0%, 20% {
+        transform: translateX(0);
+    }
+
+    25%, 45% {
+        transform: translateX(-25%);
+    }
+
+    50%, 70% {
+        transform: translateX(-50%);
+    }
+
+    75%, 95% {
+        transform: translateX(-75%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* مقاس الصور على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .gallery-track img {
+        height: 300px;
+    }
+}
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+        animation: none;
+    }
+}
+
 }
